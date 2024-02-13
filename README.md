@@ -37,7 +37,6 @@ Run the following command in the terminal.
 
 ```bash
 npm i -g npm@latest nodemon typescript ts-node @types/node
-cp ./.example.env ./.dev.env
 cp ./.example.env ./.env
 ```
 

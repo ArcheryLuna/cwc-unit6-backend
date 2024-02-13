@@ -1,15 +1,6 @@
 // Initilze the dotenv
 import { config } from 'dotenv';
-
-if (process.env.NODE_ENV !== 'production') {
-    console.log(process.env.NODE_ENV)
-    config({
-        path: '.env.development'
-    });
-} else {
-    console.log(process.env.NODE_ENV)
-    config();
-}
+config();
 
 // Imports
 import express from 'express';
