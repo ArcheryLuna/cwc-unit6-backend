@@ -36,9 +36,9 @@ To install on linux follow this guide on the [nodejs website](https://nodejs.org
 Run the following command in the terminal.
 
 ```bash
-npm i -g npm@latest nodemon typescript ts-node
+npm i -g npm@latest nodemon typescript ts-node @types/node
 cp ./.example.env ./.dev.env
-cp ./.example.env ./.prod.env
+cp ./.example.env ./.env
 ```
 
 Then to start the code run the following commands. This may throw errors but that may be because your `.env` file is not setup yet so just set that up and it should fix.
