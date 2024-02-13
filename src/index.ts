@@ -1,12 +1,21 @@
 // Initilze the dotenv
 import { config } from 'dotenv';
-config();
+
+if (process.env.NODE_ENV !== 'production') {
+    console.log(process.env.NODE_ENV)
+    config({
+        path: '.env.development'
+    });
+} else {
+    console.log(process.env.NODE_ENV)
+    config();
+}
 
 // Imports
 import express from 'express';
 
 // Handlers
-import middlewareHandler from './middleware/middlewareHandler';
+import middlewareHandler from './Handlers/Handler';
 import routingHandler from './routing/routingHandler';
 
 // Initilize the express app and services

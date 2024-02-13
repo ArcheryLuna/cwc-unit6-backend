@@ -20,6 +20,7 @@ Then just run this command to install nodejs
 ```bash
 brew install node
 ```
+
 Then check if nodejs is installed by running `node --version` if it responds with `v21.x.x` it means you have the current version. Never run any npm commands in sudo or it will break npm.
 
 ### Windows
@@ -33,11 +34,12 @@ To install on linux follow this guide on the [nodejs website](https://nodejs.org
 ### Setup the project
 
 Run the following command in the terminal.
+
 ```bash
 npm i -g npm@latest nodemon typescript ts-node
-cp ./.example.env ./.env
+cp ./.example.env ./.dev.env
+cp ./.example.env ./.prod.env
 ```
-
 
 Then to start the code run the following commands. This may throw errors but that may be because your `.env` file is not setup yet so just set that up and it should fix.
 
