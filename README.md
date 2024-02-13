@@ -26,7 +26,7 @@ Then check if nodejs is installed by running `node --version` if it responds wit
 
 To install nodejs on windows just go to the [nodejs website](https://nodejs.org/en) and click on current and follow the installer.
 
-#### Linux
+### Linux
 
 To install on linux follow this guide on the [nodejs website](https://nodejs.org/en/download/package-manager).
 
