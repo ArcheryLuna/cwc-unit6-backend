@@ -4,7 +4,7 @@
 
 you must have nodejs 20 or later installed on your computer and have typescript installed with nodemon as globals. If you dont run these commands. If you need to install nodejs here are the steps for your OS of choice
 
-#### Macos
+### Macos
 
 Best way is to use homebrew so install homebrew by running these commands
 
@@ -22,7 +22,7 @@ brew install node
 ```
 Then check if nodejs is installed by running `node --version` if it responds with `v21.x.x` it means you have the current version. Never run any npm commands in sudo or it will break npm.
 
-#### Windows
+### Windows
 
 To install nodejs on windows just go to the [nodejs website](https://nodejs.org/en) and click on current and follow the installer.
 
@@ -30,7 +30,7 @@ To install nodejs on windows just go to the [nodejs website](https://nodejs.org/
 
 To install on linux follow this guide on the [nodejs website](https://nodejs.org/en/download/package-manager).
 
-#### Setup the project
+### Setup the project
 
 Run the following command in the terminal.
 ```bash
