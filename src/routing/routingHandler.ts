@@ -1,6 +1,12 @@
 import { Router, Request, Response } from "express";
 import fs from 'fs';
-import { RouteHandler } from "../utils/types/RouteHandlerTypes";
+
+interface RouteHandler {
+    path: string;
+    [key: string]: ((req: Request, res: Response) => void) | string;
+}
+
+const router = Router();
 
 function getRoutes(): RouteHandler[] {
     var routes: RouteHandler[] = [];
@@ -26,12 +32,19 @@ export default function routingHandler(app: Router) {
 
     for (const route of routes) {
         for (const method in route) {
-            if (method.toUpperCase() === 'GET' || method.toUpperCase() === 'POST' || method.toUpperCase() === 'PUT' || method.toUpperCase() === 'DELETE') {
-                const methodName = method.toLowerCase() as keyof Router & string;
-                const handler = route[method] as ((req: Request, res: Response) => void);
-                if (typeof handler === 'function') {
-                    (app as any)[methodName](route.path, handler);
-                }
+            switch (method.toUpperCase()) {
+                case 'GET':
+                case 'POST':
+                case 'PUT':
+                case 'DELETE':
+                    const methodName = method.toLowerCase() as keyof Router & string;
+                    const handler = route[method] as ((req: Request, res: Response) => void);
+                    if (typeof handler === 'function') {
+                        (app as any)[methodName](route.path, handler);
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }
