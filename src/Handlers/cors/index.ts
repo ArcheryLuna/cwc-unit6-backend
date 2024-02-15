@@ -1,13 +1,12 @@
-import { Router } from "express";
+import Webserver from "../../index"
+import Cors from "cors";
 
-const router = Router();
-
-var corsOptions = {
+const corsOptions = {
     origin: `${process.env.CORS_ORIGIN}`,
     optionSuccessStatus: 200
 }
 
-export default function cors(app: Router) {
+export default function cors(client: Webserver) {
     console.log('CORS middleware enabled');
-    app.use(require('cors')(corsOptions));
+    client.app.use(Cors(corsOptions));
 }

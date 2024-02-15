@@ -36,7 +36,7 @@ To install on linux follow this guide on the [nodejs website](https://nodejs.org
 Run the following command in the terminal.
 
 ```bash
-npm i -g npm@latest nodemon typescript ts-node @types/node
+npm i -g npm@latest nodemon typescript ts-node @types/node eslint
 cp ./.example.env ./.env
 ```
 
