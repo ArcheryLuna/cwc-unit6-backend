@@ -8,6 +8,7 @@ export default {
     path: '/',
     // The handlers for the route
     GET(req: Request, res: Response, client: Webserver) {
+        console.log("Hello world")
         res.status(200).send(`Hello, world! GET`);
     },
     // eslint-disable-next-line no-unused-vars

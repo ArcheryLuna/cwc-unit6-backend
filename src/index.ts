@@ -68,8 +68,8 @@ class Webserver  {
                 .filter((file) => file.endsWith('.ts'));
             // Import each file and push it to the routes array
             for (const file of routeFiles) {
-                const route: RouteHandler = await import(`./routing/${dir}/${file}`);
-                routes.push(route);
+                const route = await import(`./routing/${dir}/${file}`);
+                routes.push(route.default);
             }
         }
 
@@ -89,8 +89,7 @@ class Webserver  {
                     const handler = route[method] as RouteHandlerFunction;
                     // Register the handler if it is a function
                     if (typeof handler === 'function') {
-                        const application = this.app as any;
-                        application[methodName](route.path, handler);
+                        (this.app as any)[methodName](route.path, handler);
                     }
                     break;
                 }
