@@ -30,10 +30,12 @@ class Webserver  {
         const middlewares = this.middlewares;
 
         // Serach through the middleware directory and get all the folders
-        const middlewareFolders = fs.readdirSync(`${__dirname}/Handlers`).filter((file) => fs.lstatSync(`${__dirname}/Handlers/${file}`).isDirectory());
+        const middlewareFolders = fs.readdirSync(`${__dirname}/Handlers`)
+            .filter((file) => fs.lstatSync(`${__dirname}/Handlers/${file}`).isDirectory());
         for ( const dir of middlewareFolders) {
             // Get all the files in the folder
-            const middlewareFiles = fs.readdirSync(`${__dirname}/Handlers/${dir}`).filter((file) => file.endsWith('.ts'));
+            const middlewareFiles = fs.readdirSync(`${__dirname}/Handlers/${dir}`)
+                .filter((file) => file.endsWith('.ts'));
             // Import the file and add it to the middlewares array
             for (const file of middlewareFiles) {
                 const middleware = await import(`./Handlers/${dir}/${file}`);
@@ -46,7 +48,7 @@ class Webserver  {
     for (const middleware of middlewares) {
             try {
                 // Add the middleware to the app
-                await middleware(this);
+                middleware(this);
             } catch (error) {
                 console.error(`Error adding middleware to the app: ${error}`);
             }
@@ -57,11 +59,13 @@ class Webserver  {
 
         const routes = this.route;
         // Read all the folders in the current directory
-        const routeFolders = fs.readdirSync(`${__dirname}/routing`).filter((file) => fs.lstatSync(`${__dirname}/routing/${file}`).isDirectory());
+        const routeFolders = fs.readdirSync(`${__dirname}/routing`)
+            .filter((file) => fs.lstatSync(`${__dirname}/routing/${file}`).isDirectory());
         // Read all the files in the folders
         for (const dir of routeFolders) {
             // Filter the files to only include .ts files
-            const routeFiles = fs.readdirSync(`${__dirname}/routing/${dir}`).filter((file) => file.endsWith('.ts'));
+            const routeFiles = fs.readdirSync(`${__dirname}/routing/${dir}`)
+                .filter((file) => file.endsWith('.ts'));
             // Import each file and push it to the routes array
             for (const file of routeFiles) {
                 const route: RouteHandler = await import(`./routing/${dir}/${file}`);
@@ -85,8 +89,8 @@ class Webserver  {
                     const handler = route[method] as RouteHandlerFunction;
                     // Register the handler if it is a function
                     if (typeof handler === 'function') {
-                        const app = this.app as any;
-                        app[methodName](route.path, handler);
+                        const application = this.app as any;
+                        application[methodName](route.path, handler);
                     }
                     break;
                 }
