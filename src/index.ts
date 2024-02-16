@@ -4,7 +4,7 @@ config();
 import Express from 'express';
 import fs from 'fs';
 import { RouteHandler, Handler, RouteHandlerFunction } from './utils/types/HandlerTypes';
-
+import Jest from "jest"
 
 class Webserver  {
 
@@ -24,6 +24,10 @@ class Webserver  {
 
     handle404(req: Express.Request, res: Express.Response) {
         res.status(404).send('404 - Not Found');
+    }
+
+    async Testing() {
+        
     }
 
     async Handler() {
